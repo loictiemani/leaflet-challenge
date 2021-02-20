@@ -1,8 +1,15 @@
-// Store our API endpoint inside queryUrl
-var queryUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+// Visualizing-Data-with-Leaflet - logic.js
+
+// Earthquakes & Tectonic Plates GeoJSON URL Variables
+var EarthQuakeUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+var platesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json"
+
+// Initialize & Create Two Separate LayerGroups: earthquakes & tectonicPlates
+
+
 
 // Perform a GET request to the query URL
-d3.json(queryUrl, function(data) {
+d3.json(EarthQuakeUrl, function(data) {
     // Once we get a response, send the data.features object to the createFeatures function
     createFeatures(data.features);
   });
