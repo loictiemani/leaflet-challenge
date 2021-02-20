@@ -6,8 +6,8 @@ var platesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/
 
 // Initialize & Create Two Separate LayerGroups: earthquakes & tectonicPlates
 
-var earthquakes = new L.LayerGroup();
-var tectonicPlates = new L.LayerGroup();
+var earthquakes_layer = new L.LayerGroup();
+var tectonicPlates_layer = new L.LayerGroup();
 
 
 // Define Variables for Tile Layers
@@ -41,14 +41,12 @@ function createMap(earthquakes) {
     // Define Variable and Tile layers
     var satelliteMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
       attribution: "Map data © <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-      tileSize: 512,
       maxZoom: 18,
-      zoomOffset: -1,
       id: "mapbox.satellite",
       accessToken: API_KEY
     });
   
-    var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    var grayscale = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
       attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
       maxZoom: 18,
       id: "mapbox.light",
@@ -56,18 +54,19 @@ function createMap(earthquakes) {
 
     });
 
-    var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    var outdoor = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
       attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
       maxZoom: 18,
-      id: "mapbox.light",
+      id: "mapbox.outdoors",
       accessToken: API_KEY
 
     });
   
     // Define a baseMaps object to hold our base layers
     var baseMaps = {
-      "Street Map": streetmap,
-      "Dark Map": darkmap
+      "Earthquakes": earthquakes_layer,
+      "Tectonic Plates": tectonicPlates_layer,
+
     };
   
     // Create overlay object to hold our overlay layer
