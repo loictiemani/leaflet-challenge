@@ -72,7 +72,8 @@ function createMap(earthquakes) {
   
     // Create overlay object to hold our overlay layer
     var overlayMaps = {
-      Earthquakes: earthquakes_layer
+      Earthquakes: earthquakes_layer,
+      " Fault Lines": tectonicPlates_layer,
     };
   
     // Create our map, giving it the streetmap and earthquakes layers to display on load
