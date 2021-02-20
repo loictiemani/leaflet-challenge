@@ -1,11 +1,13 @@
 // Visualizing-Data-with-Leaflet - logic.js
 
 // Earthquakes & Tectonic Plates GeoJSON URL Variables
-var EarthQuakeUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+var EarthQuakeUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 var platesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json"
 
 // Initialize & Create Two Separate LayerGroups: earthquakes & tectonicPlates
 
+var earthquakes = new L.LayerGroup();
+var tectonicPlates = new L.LayerGroup();
 
 
 // Perform a GET request to the query URL
