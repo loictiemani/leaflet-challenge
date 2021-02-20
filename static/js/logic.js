@@ -54,7 +54,7 @@ function createMap(earthquakes) {
 
     });
 
-    var outdoor = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    var outdoorsMap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
       attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
       maxZoom: 18,
       id: "mapbox.outdoors",
@@ -64,14 +64,15 @@ function createMap(earthquakes) {
   
     // Define a baseMaps object to hold our base layers
     var baseMaps = {
-      "Earthquakes": earthquakes_layer,
-      "Tectonic Plates": tectonicPlates_layer,
+      "Satellite": satelliteMap,
+      "Grayscale": grayscale,
+      "Outdoors" : outdoorsMap
 
     };
   
     // Create overlay object to hold our overlay layer
     var overlayMaps = {
-      Earthquakes: earthquakes
+      Earthquakes: earthquakes_layer
     };
   
     // Create our map, giving it the streetmap and earthquakes layers to display on load
