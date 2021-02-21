@@ -13,6 +13,11 @@ var tectonicPlates_layer = new L.LayerGroup();
 // Perform a GET request to the query URL
 d3.json(EarthQuakeUrl, function(data) {
     // Once we get a response, send the data.features object to the createFeatures function
+
+    var earthquakes = data.features
+    console.log(earthquakes)
+  // Loop through the earthquake data and create one circle marker for each earthquake
+
   
     // Define Variable and Tile layers
     var satelliteMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
